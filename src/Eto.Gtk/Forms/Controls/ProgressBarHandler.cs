@@ -5,8 +5,8 @@ namespace Eto.GtkSharp.Forms.Controls
 {
 	public class ProgressBarHandler : GtkControl<Gtk.ProgressBar, ProgressBar, ProgressBar.ICallback>, ProgressBar.IHandler
 	{
-		int minValue;
-		int maxValue = 100;
+		double minValue;
+		double maxValue = 100;
 		bool indeterminate;
 		UITimer timer;
 		public static double UpdateInterval = 0.2;
@@ -64,7 +64,7 @@ namespace Eto.GtkSharp.Forms.Controls
 			}
 		}
 
-		public int MaxValue
+		public double MaxValue
 		{
 			get { return maxValue; }
 			set
@@ -75,7 +75,7 @@ namespace Eto.GtkSharp.Forms.Controls
 			}
 		}
 
-		public int MinValue
+		public double MinValue
 		{
 			get { return minValue; }
 			set
@@ -86,12 +86,12 @@ namespace Eto.GtkSharp.Forms.Controls
 			}
 		}
 
-		public int Value
+		public double Value
 		{
-			get { return (int)((Control.Fraction * MaxValue) + MinValue); }
+			get { return Control.Fraction * MaxValue + MinValue; }
 			set
 			{
-				Control.Fraction = Math.Max(0, Math.Min(1, ((double)value - MinValue) / (double)MaxValue));
+				Control.Fraction = Math.Max(0, Math.Min(1, (value - MinValue) / MaxValue));
 			}
 		}
 

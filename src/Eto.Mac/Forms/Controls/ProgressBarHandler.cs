@@ -76,7 +76,8 @@ namespace Eto.Mac.Forms.Controls
 			return new Size (80, 30);
 		}
 
-		public bool Indeterminate {
+		public bool Indeterminate
+		{
 			get { return Control.Indeterminate; }
 			set { 
 				Control.Indeterminate = value;
@@ -87,22 +88,21 @@ namespace Eto.Mac.Forms.Controls
 			}
 		}
 
-		public int MaxValue {
-			get { return (int)Control.MaxValue; }
-			set { 
-				Control.MaxValue = value;
-			}
+		public double MaxValue
+		{
+			get { return Control.MaxValue; }
+			set { Control.MaxValue = value; }
 		}
 		
-		public int MinValue {
-			get { return (int)Control.MinValue; }
-			set {
-				Control.MinValue = value;
-			}
+		public double MinValue
+		{
+			get { return Control.MinValue; }
+			set { Control.MinValue = value; }
 		}
 
-		public int Value {
-			get { return (int)Control.DoubleValue; }
+		public double Value
+		{
+			get { return Control.DoubleValue; }
 			set { Control.DoubleValue = value; }
 		}
 	}

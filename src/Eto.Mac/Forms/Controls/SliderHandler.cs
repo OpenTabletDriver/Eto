@@ -76,10 +76,6 @@ namespace Eto.Mac.Forms.Controls
 			{
 				handler.TriggerMouseCallback();
 
-				var newval = (int)Math.Round(handler.Control.DoubleValue);
-				if (newval != handler.Control.IntValue)
-					handler.Control.IntValue = newval;
-
 				handler.Callback.OnValueChanged(handler.Widget, EventArgs.Empty);
 			}
 		}
@@ -89,9 +85,9 @@ namespace Eto.Mac.Forms.Controls
 			return Orientation == Orientation.Horizontal ? new Size(80, 30) : new Size(30, 80);
 		}
 
-		public int MaxValue
+		public double MaxValue
 		{
-			get { return (int)Control.MaxValue; }
+			get { return Control.MaxValue; }
 			set
 			{ 
 				var old = TickFrequency;
@@ -100,9 +96,9 @@ namespace Eto.Mac.Forms.Controls
 			}
 		}
 
-		public int MinValue
+		public double MinValue
 		{
-			get { return (int)Control.MinValue; }
+			get { return Control.MinValue; }
 			set
 			{
 				var old = TickFrequency;
@@ -111,10 +107,10 @@ namespace Eto.Mac.Forms.Controls
 			}
 		}
 
-		public int Value
+		public double Value
 		{
-			get { return Control.IntValue; }
-			set { Control.IntValue = value; }
+			get { return Control.DoubleValue; }
+			set { Control.DoubleValue = value; }
 		}
 
 		public bool SnapToTick
@@ -123,17 +119,17 @@ namespace Eto.Mac.Forms.Controls
 			set { Control.AllowsTickMarkValuesOnly = value; }
 		}
 
-		public int TickFrequency
+		public double TickFrequency
 		{
 			get
 			{ 
 				if (Control.TickMarksCount > 1)
-					return (int)((MaxValue - MinValue) / (Control.TickMarksCount - 1));
+					return (MaxValue - MinValue) / (Control.TickMarksCount - 1);
 				return 0;
 			}
 			set
 			{ 
-				Control.TickMarksCount = value > 0 ? ((MaxValue - MinValue) / value) + 1 : 0;
+				Control.TickMarksCount = value > 0 ? (MaxValue - MinValue) / value + 1 : 0;
 			}
 		}
 
