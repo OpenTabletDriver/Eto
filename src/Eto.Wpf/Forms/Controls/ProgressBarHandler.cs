@@ -52,19 +52,19 @@ namespace Eto.Wpf.Forms.Controls
 			};
 		}
 
-		public int MaxValue
+		public double MaxValue
 		{
 			get { return (int)Control.Maximum; }
 			set { Control.Maximum = value; }
 		}
 
-		public int MinValue
+		public double MinValue
 		{
 			get { return (int)Control.Minimum; }
 			set { Control.Minimum = value; }
 		}
 
-		public int Value
+		public double Value
 		{
 			get { return (int)Control.Value; }
 			set { Control.Value = value; }
